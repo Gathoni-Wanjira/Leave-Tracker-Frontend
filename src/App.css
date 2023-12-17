@@ -1,4 +1,4 @@
-*{
+* {
   box-sizing: border-box;
 }
 .App {
@@ -16,5 +16,27 @@
   background-color: #fff;
   border-radius: 28px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-   
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: 1fr;
+  padding: 24px;
+}
+.borderLine {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  
+
+}
+.borderLine div {
+  width: 2px;
+  height: 60%; 
+  background-color: lightgray;
+}
+.leftModal {
+
+}
+.rightModal {
+  
 }

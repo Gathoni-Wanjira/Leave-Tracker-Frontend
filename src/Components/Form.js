@@ -3,7 +3,17 @@ import React from 'react'
 function Form() {
   return (
     <div className='modaldiv'>
-        Form
+        
+        <div className='leftModal'>
+
+        </div>
+        <div className='borderLine'>
+            <div>
+            </div>    
+        </div>
+        <div className='rightModal'>
+
+        </div>
 
     </div>
   )
