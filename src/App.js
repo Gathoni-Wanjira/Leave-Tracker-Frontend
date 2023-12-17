@@ -1,11 +1,12 @@
-import Home from './Components/Home';
+// import LeaveForm from './Components/LeaveForm';
+import Form from './Components/Form';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-
-       <Home/>
+      {/* <LeaveForm/> */}
+      <Form/>
     </div>
   );
 }
