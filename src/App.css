@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
 }
 .App {
   background-color: rgba(17, 246, 66, 0.12);
@@ -35,6 +36,20 @@
   background-color: lightgray;
 }
 .leftModal {
+  display: flex;
+  flex-direction: column;
+
+}
+.topRow {
+  justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  
+
+}
+.bottomColumn {
+  display: flex;
+  flex-direction: column;
 
 }
 .rightModal {
