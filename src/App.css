@@ -38,8 +38,26 @@
 .leftModal {
   display: flex;
   flex-direction: column;
+  
+}
+
+.rightModal{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
 }
+.rightModal img {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  padding: 15%;
+
+  
+
+}
+
 .topRow {
   justify-content: space-around;
   display: flex;
@@ -50,8 +68,52 @@
 .bottomColumn {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
 }
-.rightModal {
+.bottomColumn form {
+  width: 70%;
   
+  
+}
+.applyBtn {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.applyBtn button {
+  border: 0px;
+  padding: 12px 28px;
+  border-radius: 4px;
+  background-color:#008036 ;
+  color: #fff;
+}
+
+
+select,input {
+  margin-bottom: 12px;
+  padding: 12px 6px;
+  border: 1px solid gray;
+  border-radius: 4px;
+  width: 100%;
+  font-size: 14px;
+
+
+}
+label {
+  color: gray;
+  display: inline-block;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.trackerTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color:#008036;
+  /* border-bottom: 2px solid #D0E8AC; */
+
 }
