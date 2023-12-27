@@ -28,11 +28,21 @@ function Form() {
               </div>
             </div>
             <div className='SelectDepartment'>
-              <select name="Departmennts" id="department">
+              <select name="Departments" id="department">
                 <option value="betting">Betting</option>
                 <option value="consulting">Consulting</option>
                 <option value="tech">Tech</option>
                 <option value="hospitality">Hospitality</option>
+              </select>
+            </div>
+            <div className='SelectPurpose'>
+              <select name="Purposes" id="purpose">
+                <option value="maternity">Maternity</option>
+                <option value="annual">Annual</option>
+                <option value="paternity">Paternity</option>
+                <option value="emergency">Emergency</option>
+                <option value="study">Study</option>
+                <option value="compassionate">Compassionate</option>
               </select>
             </div>
 
@@ -48,7 +58,6 @@ function Form() {
             </div>
             <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
           </form>
-
 
         </div>
 
