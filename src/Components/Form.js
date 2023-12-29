@@ -17,7 +17,7 @@ function Form() {
     e.preventDefault()
     let applicationStatus = checkValidation()
     if (applicationStatus.valid) {
-      const generateLeaveRequestEmail = (fullName, department, reason, startDate, endDate) => {
+      const generateLeaveRequestEmail = (fullName, department, reason, startDate, endDate, emailAdress) => {
         return `
         Subject: Leave Request - ${fullName}
       
@@ -36,11 +36,12 @@ function Form() {
         Regards,
       
         ${fullName}
+        ${emailAdress}
         `;
       };
       
       
-      const leaveRequestEmail = generateLeaveRequestEmail(fullName, department, reason, startDate, endDate);
+      const leaveRequestEmail = generateLeaveRequestEmail(fullName, department, reason, startDate, endDate,emailAdress);
       console.log(leaveRequestEmail);
       
 
