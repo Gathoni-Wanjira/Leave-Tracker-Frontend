@@ -1,24 +1,52 @@
 import React from 'react'
 import { useState } from 'react'
 import validator from 'validator'
+// import { format } from "date-fns";
+
 
 function Form() {
   const [fullName, setFullName] = useState("");
   const [emailAdress, setEmailAdress] = useState("");
-  const [department, setDepartment] = useState("");
-  const [reason, setReason] = useState("");
+  const [department, setDepartment] = useState("Consulting");
+  const [reason, setReason] = useState("Emergency");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
 
   function handleSubmit(e) {
     e.preventDefault()
-    let isValid = checkValidation()
-    if (isValid.valid) {
+    let applicationStatus = checkValidation()
+    if (applicationStatus.valid) {
+      const generateLeaveRequestEmail = (fullName, department, reason, startDate, endDate) => {
+        return `
+        Subject: Leave Request - ${fullName}
+      
+        Dear HR,
+      
+        I hope this message finds you well. I would like to request leave from the ${department} department for the following reasons:
+      
+        - Reason for Leave: ${reason}
+        - Start Date: ${startDate}
+        - End Date: ${endDate}
+      
+        If there are any specific procedures or forms that need to be completed for the leave request, please let me know, and I will promptly take care of them.
+      
+        Your understanding and support regarding this matter is highly appreciated.
+      
+        Regards,
+      
+        ${fullName}
+        `;
+      };
+      
+      
+      const leaveRequestEmail = generateLeaveRequestEmail(fullName, department, reason, startDate, endDate);
+      console.log(leaveRequestEmail);
+      
 
     }
     else {
-      alert(isValid.errormessage)
+      alert(applicationStatus.errormessage)
     }
   }
   function checkValidation() {
@@ -38,7 +66,7 @@ function Form() {
     // Validate Email
 
     if (validator.isEmail(emailAdress)) {
-       setEmailAdress('Valid Email :)')
+       //setEmailAdress('Valid Email :)')
     } else {
       setEmailAdress('Enter valid Email!')
      
@@ -46,8 +74,30 @@ function Form() {
 
     // Validate Departments
     // Validate Reasons
+    
     // Validate Start Date
-    // Validate End Date
+  if (startDate.trim() === "") {
+    status.valid = false;
+    status.errormessage = "Select a start date";
+    return status;
+  }
+
+  // // Validate End Date
+  if (endDate.trim() === "") {
+    status.valid = false;
+    status.errormessage = "Select an end date";
+    return status;
+  }
+
+  // // Check if the End Date is not earlier than the Start Date
+  const startDateObj = new Date(startDate);
+  const endDateObj = new Date(endDate);
+
+  if (startDateObj > endDateObj) {
+    status.valid = false;
+    status.errormessage = "End Date cannot be earlier than Start Date";
+    return status;
+  }
 
     // TODO: HANDLE VALIDATION FOR ALL INPUTS. 
     status.valid = true
@@ -66,49 +116,49 @@ function Form() {
 
           <form class="max-w-md mx-auto" onSubmit={handleSubmit}>
 
-            <div class="grid md:grid-cols-2 md:gap-6">
-              <div class="relative z-0 w-full mb-5 group">
-                <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Full Name*</label> <br />
+            <div >
+              <div >
+                <label for="floating_first_name" >Full Name*</label> <br />
                 <input value={fullName} onChange={(e) => setFullName(e.target.value)}
-                  type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                  type="text" name="floating_first_name" id="floating_first_name" placeholder="e.g. Jane Doe" required />
               </div>
 
-              <div class="relative z-0 w-full mb-5 group">
-                <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address*</label> <br />
-                <input value={emailAdress} onChange={(e) => setEmailAdress(e.target.value)} type="email" name="floating_email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+              <div >
+                <label for="floating_email">Email address*</label> <br />
+                <input value={emailAdress} onChange={(e) => setEmailAdress(e.target.value)} type="email" name="floating_email" id="floating_email"  placeholder="Enter your email " required  />
               </div>
             </div>
             <div className='SelectDepartment'>
               <label for="department">Departments*</label><br />
-              <select value={department} onChange={(e) => setDepartment(e.target.value)} name="Departments" id="department" >
-                <option value="betting">Betting</option>
-                <option value="consulting">Consulting</option>
-                <option value="tech">Tech</option>
-                <option value="hospitality">Hospitality</option>
+              <select value={department} onChange={(e) => setDepartment(e.target.value)} name="Departments" id="department" required >
+                <option value="Consulting">Consulting</option>
+                <option value="Betting">Betting</option>
+                <option value="Tech">Tech</option>
+                <option value="Hospitality">Hospitality</option>
               </select>
             </div>
             <div className='SelectPurpose'>
               <label for="purpose">Reason for Leave*</label><br />
-              <select value={reason} onChange={(e) => setReason(e.target.value)} name="Purposes" id="purpose">
-                <option value="maternity">Maternity</option>
-                <option value="annual">Annual</option>
-                <option value="paternity">Paternity</option>
-                <option value="emergency">Emergency</option>
-                <option value="study">Study</option>
-                <option value="compassionate">Compassionate</option>
+              <select value={reason} onChange={(e) => setReason(e.target.value)} name="Purposes" id="purpose" required>
+                <option value="Emergency">Emergency</option>
+                <option value="Maternity">Maternity</option>
+                <option value="Annual">Annual</option>
+                <option value="Paternity">Paternity</option>
+                <option value="Study">Study</option>
+                <option value="Compassionate">Compassionate</option>
               </select>
             </div>
 
             <label for="strdate">Start Date*</label> <br />
-            <input value={startDate} onChange={(e) => setStartDate(e.target.value)} id='strdate' name='strdate' type='date'></input><br />
+            <input value={startDate} onChange={(e) => setStartDate(e.target.value)} id='strdate' name='strdate' type='date' required></input><br />
 
             <label for="endDate">End Date*</label> <br />
-            <input value={endDate} onChange={(e) => setEndDate(e.target.value)} id='endDate' name='endDate' type='date'></input><br />
+            <input  min = {startDate.length>0 ? new Date(startDate).toISOString().split('T')[0] : new Date(Date.now()).toISOString().split('T')[0] } value={endDate} onChange={(e) => setEndDate(e.target.value)} id='endDate' name='endDate' type='date' required></input><br />
             <div className='applyBtn'>
-              <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Apply</button>
+              <button type="submit" >Apply</button>
             </div>
           </form>
-
+         
         </div>
 
       </div>
