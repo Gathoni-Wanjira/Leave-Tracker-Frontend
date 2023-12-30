@@ -17,33 +17,39 @@ function Form() {
     e.preventDefault()
     let applicationStatus = checkValidation()
     if (applicationStatus.valid) {
-      const generateLeaveRequestEmail = (fullName, department, reason, startDate, endDate, emailAdress) => {
-        return `
-        Subject: Leave Request - ${fullName}
-      
-        Dear HR,
-      
-        I hope this message finds you well. I would like to request leave from the ${department} department for the following reasons:
-      
-        - Reason for Leave: ${reason}
-        - Start Date: ${startDate}
-        - End Date: ${endDate}
-      
-        If there are any specific procedures or forms that need to be completed for the leave request, please let me know, and I will promptly take care of them.
-      
-        Your understanding and support regarding this matter is highly appreciated.
-      
-        Regards,
-      
-        ${fullName}
-        ${emailAdress}
-        `;
-      };
-      
-      
-      const leaveRequestEmail = generateLeaveRequestEmail(fullName, department, reason, startDate, endDate,emailAdress);
-      console.log(leaveRequestEmail);
-      
+
+      const data = {
+        fullName: fullName,
+        department: department,
+        reason: reason,
+        startDate: startDate,
+        endDate: endDate,
+        email: emailAdress
+      }
+      // console.log(data)
+
+      let url = "http://127.0.0.1:5000"
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((responseData) => {
+          console.log("Leave request successful!");
+          console.log(responseData);
+        })
+        .catch((error) => {
+          console.error("Failed to submit leave request:", error);
+        });
 
     }
     else {
@@ -67,38 +73,38 @@ function Form() {
     // Validate Email
 
     if (validator.isEmail(emailAdress)) {
-       //setEmailAdress('Valid Email :)')
+      //setEmailAdress('Valid Email :)')
     } else {
       setEmailAdress('Enter valid Email!')
-     
+
     }
 
     // Validate Departments
     // Validate Reasons
-    
+
     // Validate Start Date
-  if (startDate.trim() === "") {
-    status.valid = false;
-    status.errormessage = "Select a start date";
-    return status;
-  }
+    if (startDate.trim() === "") {
+      status.valid = false;
+      status.errormessage = "Select a start date";
+      return status;
+    }
 
-  // // Validate End Date
-  if (endDate.trim() === "") {
-    status.valid = false;
-    status.errormessage = "Select an end date";
-    return status;
-  }
+    // // Validate End Date
+    if (endDate.trim() === "") {
+      status.valid = false;
+      status.errormessage = "Select an end date";
+      return status;
+    }
 
-  // // Check if the End Date is not earlier than the Start Date
-  const startDateObj = new Date(startDate);
-  const endDateObj = new Date(endDate);
+    // // Check if the End Date is not earlier than the Start Date
+    const startDateObj = new Date(startDate);
+    const endDateObj = new Date(endDate);
 
-  if (startDateObj > endDateObj) {
-    status.valid = false;
-    status.errormessage = "End Date cannot be earlier than Start Date";
-    return status;
-  }
+    if (startDateObj > endDateObj) {
+      status.valid = false;
+      status.errormessage = "End Date cannot be earlier than Start Date";
+      return status;
+    }
 
     // TODO: HANDLE VALIDATION FOR ALL INPUTS. 
     status.valid = true
@@ -126,7 +132,7 @@ function Form() {
 
               <div >
                 <label for="floating_email">Email address*</label> <br />
-                <input value={emailAdress} onChange={(e) => setEmailAdress(e.target.value)} type="email" name="floating_email" id="floating_email"  placeholder="Enter your email " required  />
+                <input value={emailAdress} onChange={(e) => setEmailAdress(e.target.value)} type="email" name="floating_email" id="floating_email" placeholder="Enter your email " required />
               </div>
             </div>
             <div className='SelectDepartment'>
@@ -154,12 +160,12 @@ function Form() {
             <input value={startDate} onChange={(e) => setStartDate(e.target.value)} id='strdate' name='strdate' type='date' required></input><br />
 
             <label for="endDate">End Date*</label> <br />
-            <input  min = {startDate.length>0 ? new Date(startDate).toISOString().split('T')[0] : new Date(Date.now()).toISOString().split('T')[0] } value={endDate} onChange={(e) => setEndDate(e.target.value)} id='endDate' name='endDate' type='date' required></input><br />
+            <input min={startDate.length > 0 ? new Date(startDate).toISOString().split('T')[0] : new Date(Date.now()).toISOString().split('T')[0]} value={endDate} onChange={(e) => setEndDate(e.target.value)} id='endDate' name='endDate' type='date' required></input><br />
             <div className='applyBtn'>
               <button type="submit" >Apply</button>
             </div>
           </form>
-         
+
         </div>
 
       </div>
