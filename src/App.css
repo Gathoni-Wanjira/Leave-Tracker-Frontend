@@ -117,3 +117,23 @@ label {
   /* border-bottom: 2px solid #D0E8AC; */
 
 }
+
+/* MEDIA QUERIES BREAK POINTS */
+
+/* MOBILE PHONE  */
+@media only screen 
+   and (min-width : 320px) {
+   /* Styles here */
+}
+
+/* TABLET */
+@media only screen 
+   and (min-width : 768px) {
+   /* Styles here */
+}
+
+/* LAPTOP */
+@media only screen 
+   and (min-width : 1200px) {
+   /* Styles here */
+}
