@@ -28,7 +28,6 @@
   justify-content: center;
   align-items: center;
   
-
 }
 .borderLine div {
   width: 2px;
@@ -53,8 +52,6 @@
   display: block;
   max-width: 100%;
   padding: 15%;
-
-  
 
 }
 
@@ -129,11 +126,50 @@ label {
 /* TABLET */
 @media only screen 
    and (min-width : 768px) {
-   /* Styles here */
+
+    .modaldiv { 
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+      height: auto;
+      grid-template-areas: 
+      "first"
+      "last";
+
+    }
+    .rightModal{ 
+      grid-area: first;
+
+    }
+    .borderLine {
+      display: none;
+    }
+    .leftModal {
+      grid-area: last;
+
+    }
+
+   
 }
 
 /* LAPTOP */
 @media only screen 
    and (min-width : 1200px) {
-   /* Styles here */
+    
+    .modaldiv { 
+      grid-template-columns: 1fr auto 1fr;
+      grid-template-rows: 1fr;
+      height: 80%;
+      grid-template-areas: "first middle last"}
+    .rightModal{ 
+      grid-area: last;
+
+    }
+    .borderLine {
+      display: flex;
+      grid-area: middle;
+    }
+    .leftModal {
+      grid-area: first;
+
+    }
 }
