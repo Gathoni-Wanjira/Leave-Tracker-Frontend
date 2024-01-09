@@ -11,6 +11,7 @@ function Form() {
   const [reason, setReason] = useState("Emergency");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [daysNumber, setDaysNumber] = useState("")
 
 
   function handleSubmit(e) {
@@ -24,7 +25,8 @@ function Form() {
         reason: reason,
         startDate: startDate,
         endDate: endDate,
-        email: emailAdress
+        email: emailAdress,
+        daysNumber: daysNumber,
       }
       // console.log(data)
 
@@ -117,7 +119,7 @@ function Form() {
 
       <div className='leftModal'>
         <div className='topRow'>
-          <p className='trackerTitle'>LEAVE TRACKER</p>
+          <p className='trackerTitle'>LEAVE REQUESTER</p>
         </div>
         <div className='bottomColumn'>
 
@@ -161,6 +163,11 @@ function Form() {
 
             <label for="endDate">End Date*</label> <br />
             <input min={startDate.length > 0 ? new Date(startDate).toISOString().split('T')[0] : new Date(Date.now()).toISOString().split('T')[0]} value={endDate} onChange={(e) => setEndDate(e.target.value)} id='endDate' name='endDate' type='date' required></input><br />
+            <div >
+                <label for="floating_first_name" >Number of Days*</label> <br />
+                <input value={daysNumber} onChange={(e) => setDaysNumber(e.target.value)}
+                  type="text" name="floating_first_name" id="floating_first_name" placeholder="e.g. 3 number of days" required />
+              </div>
             <div className='applyBtn'>
               <button type="submit" >Apply</button>
             </div>
