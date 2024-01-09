@@ -166,7 +166,7 @@ function Form() {
             <div >
                 <label for="floating_first_name" >Number of Days*</label> <br />
                 <input value={daysNumber} onChange={(e) => setDaysNumber(e.target.value)}
-                  type="text" name="floating_first_name" id="floating_first_name" placeholder="e.g. 3 number of days" required />
+                  type="text" name="floating_first_name" id="floating_first_name" placeholder="e.g. 3 " required />
               </div>
             <div className='applyBtn'>
               <button type="submit" >Apply</button>
