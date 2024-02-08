@@ -36,27 +36,18 @@ The following languages have been used on this project:
 ## SCREENSHOTS FROM THE APP. 
 ---
 
-- HOMEPAGE.
-  <img src="./images/Home%20Page.jpeg" alt="Home screenshot" />
-
-- USER-FOUND GITHUB DETAILS. 
+- Web View .
+<img src='Web Screen.png.jpeg' alt='web'></img>
   
-  <img src="./images/UserFound.jpeg" alt="User-Found screenshot" />
+- ipad View .
+<img src='ipad view.png.jpeg' alt='ipad'></img>
 
-- GITHUB SEARCH USER REPOSITORIES FOUND.
+- Mobile View .
+<img src='mobile view.png.jpeg' alt='mobile'></img>
 
-  <img src="./images/Repositories.jpeg" alt=" Repositories screenshot" />
+- Sample Email View .
+<img src='Web Screen.png.jpeg' alt='web'></img>
 
-
-- GITHUB SEARCH USER REPOSITORIES FOUND.(cont.)
-  <img src="./images/Repositories%20Cont.jpeg" alt="Repositories screenshot" />
-
-
- - ERROR MESSAGE IF GITHUB USER IS NOT FOUND.
-  <img src="./images//User%20Not%20Found.jpeg" alt=" Not Found screenshot" />
-
-- ERROR MESSAGE IF USER REPOSITORY IS NOT FOUND.
-  <img src="./images/No%20Repositories.jpeg" alt=" No User Repositories screenshot" />
 
 
 
