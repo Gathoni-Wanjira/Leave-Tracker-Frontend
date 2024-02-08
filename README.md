@@ -37,16 +37,16 @@ The following languages have been used on this project:
 ---
 
 - Web View .
-<img src='webscreen.png' alt='web'></img>
+<img src='./images/webscreen.png' alt='web'></img>
   
 - ipad View .
-<img src='ipadview.png' alt='ipad'></img>
+<img src='./images/ipadview.png' alt='ipad'></img>
 
 - Mobile View .
-<img src='mobileview.png' alt='mobile'></img>
+<img src='./images/mobileview.png' alt='mobile'></img>
 
 - Sample Email View .
-<img src='sampleemail.png' alt='web'></img>
+<img src='./images/sampleemail.png' alt='web'></img>
 
 
 
