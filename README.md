@@ -48,7 +48,11 @@ The following languages have been used on this project:
 - Sample Email View .
 <img src='./images/sampleemail.png' alt='web'></img>
 
+## NB
 
+--- 
+- I used a third party library for the backend called MailTrap to send the emails to the hr.
+-  [You can find it here](https://mailtrap.io/)
 
 
 ## KNOWN BUGS.
